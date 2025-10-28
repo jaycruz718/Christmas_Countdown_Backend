@@ -5,20 +5,23 @@ import dotenv from 'dotenv';
 import { globalErr, log } from "./middleware/middleware.mjs";
 
 // Routes
-import Countdown from "./routes/countdownRoutes.mjs";
-import Comment from "./routes/commentsRoutes.mjs";
-import Post from "./routes/postsRoutes.mjs";
-
+import postsRoutes from "./routes/postsRoutes.mjs";
+import commentsRoutes from "./routes/commentsRoutes.mjs";
+import countdownRoutes from "./routes/countdownRoutes.mjs";
 
 // Setups
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 3001;
 
+// Connect DB
+connectDB();
+
 // Middleware
 app.use(express.json());
 app.use(log);
-app.use(cors({ origin: 'http://http://localhost:5173', credentials: true }));
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
+
 
 // Routes 
 app.use("/api/posts", postsRoutes);

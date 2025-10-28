@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
 
 const postSchema = new mongoose.Schema({
-    author: { type: String, required: true },
-    content: { type: String, required: true},
-    createdAt: { type: Date, default: Date.now },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment"}]
+  author: { type: String, required: true },
+  content: { type: String, required: true },
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  createdAt: { type: Date, default: Date.now }
 });
 
-const Post = mongoose.model('Post', postSchema);
-export default Post;
+export default mongoose.model("Post", postSchema);
